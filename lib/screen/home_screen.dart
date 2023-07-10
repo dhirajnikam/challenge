@@ -105,7 +105,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   );
                                 },
                                 child: Container(
-                                  // height: Get.height * 0.15,
                                   width: Get.width * 0.9,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30),

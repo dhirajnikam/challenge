@@ -141,41 +141,43 @@ class ProfileScreen extends StatelessWidget {
                 init: CommonController(),
                 initState: (_) {},
                 builder: (_) {
-                  return ActionSlider.standard(
-                    icon: Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      color: Colors.white,
+                  return Center(
+                    child: ActionSlider.standard(
+                      icon: Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        color: Colors.white,
+                      ),
+                      loadingIcon: CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
+                      successIcon: Icon(
+                        Icons.check_rounded,
+                        color: Colors.white,
+                      ),
+                      toggleColor: Colors.blueGrey.shade900,
+                      backgroundColor: Colors.blueGrey.shade700,
+                      width: Get.width * 0.8,
+                      actionThresholdType: ThresholdType.release,
+                      child: const Text(
+                        'Slide to save',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      action: (cont) async {
+                        cont.loading(); //starts loading animation
+                        await Future.delayed(const Duration(seconds: 3));
+                        cont.success(); //starts success animation
+                        _.setSelectedProfile(DeviceProfile(
+                          fontSize: fontSize,
+                          id: id,
+                          latitude: latitude,
+                          longitude: longitude,
+                          name: name,
+                          themeColor: themeColor,
+                        ));
+                        await Future.delayed(const Duration(seconds: 1));
+                        cont.reset(); //resets the slider
+                      },
                     ),
-                    loadingIcon: CircularProgressIndicator(
-                      color: Colors.white,
-                    ),
-                    successIcon: Icon(
-                      Icons.check_rounded,
-                      color: Colors.white,
-                    ),
-                    toggleColor: Colors.blueGrey.shade900,
-                    backgroundColor: Colors.blueGrey.shade700,
-                    width: Get.width * 0.8,
-                    actionThresholdType: ThresholdType.release,
-                    child: const Text(
-                      'Slide to save',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    action: (cont) async {
-                      cont.loading(); //starts loading animation
-                      await Future.delayed(const Duration(seconds: 3));
-                      cont.success(); //starts success animation
-                      _.setSelectedProfile(DeviceProfile(
-                        fontSize: fontSize,
-                        id: id,
-                        latitude: latitude,
-                        longitude: longitude,
-                        name: name,
-                        themeColor: themeColor,
-                      ));
-                      await Future.delayed(const Duration(seconds: 1));
-                      cont.reset(); //resets the slider
-                    },
                   );
                 },
               ),
