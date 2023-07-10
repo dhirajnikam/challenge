@@ -1,3 +1,4 @@
+
 import 'package:challenge148/controller/common_controller.dart';
 import 'package:challenge148/screen/new_profile.dart';
 import 'package:challenge148/screen/profile_screen.dart';
@@ -12,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final CommonController commonController = Get.put(CommonController());
+  final  commonController = Get.put(CommonController());
 
   @override
   void initState() {
@@ -105,7 +106,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   );
                                 },
                                 child: Container(
-                                  // height: Get.height * 0.15,
                                   width: Get.width * 0.9,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30),

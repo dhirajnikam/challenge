@@ -159,6 +159,11 @@ class CommonController extends GetxController {
           Get.back();
           isDataComplete.value = false;
           showColorPicker.value = false;
+          Get.snackbar(
+            "Profile",
+            "Save Successful",
+            backgroundColor: Colors.green.shade200,
+          );
         } else {
           // Show the repeated fields as an error message
           final repeatedFieldsString = repeatedFields.join(', ');
@@ -170,6 +175,12 @@ class CommonController extends GetxController {
           );
         }
       } catch (e) {
+        Get.snackbar(
+          'Error',
+          e.toString(),
+          backgroundColor: Colors.red.shade200,
+          colorText: Colors.black,
+        );
         print(e);
       }
     } else {
